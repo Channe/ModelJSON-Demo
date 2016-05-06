@@ -129,8 +129,10 @@ static const char MJCachedPropertiesKey = '\0';
     if (cachedProperties == nil) {
         cachedProperties = [NSMutableArray array];
         
-        //遍历类
-        [self mj_enumerateClasses:^(__unsafe_unretained Class c, BOOL *stop) {
+        //TODO: 遍历类及父类，分类能够处理吗？
+        [self mj_enumerateClasses:
+         ^(__unsafe_unretained Class c, BOOL *stop)
+        {
             // 1.获得所有的成员变量
             unsigned int outCount = 0;
             objc_property_t *properties = class_copyPropertyList(c, &outCount);

@@ -7,7 +7,7 @@
 //
 
 #import "MJFoundation.h"
-#import "MJExtensionConst.h"
+//#import "MJExtensionConst.h"
 #import <CoreData/CoreData.h>
 
 static NSSet *foundationClasses_;
@@ -34,10 +34,12 @@ static NSSet *foundationClasses_;
 
 + (BOOL)isClassFromFoundation:(Class)c
 {
+    //NSObject需要特殊判断
     if (c == [NSObject class] || c == [NSManagedObject class]) return YES;
     
     __block BOOL result = NO;
     [[self foundationClasses] enumerateObjectsUsingBlock:^(Class foundationClass, BOOL *stop) {
+        //TODO: 如果是上面foundationClasses中类的子类，是不是就判断出错了？
         if ([c isSubclassOfClass:foundationClass]) {
             result = YES;
             *stop = YES;
@@ -45,4 +47,5 @@ static NSSet *foundationClasses_;
     }];
     return result;
 }
+
 @end

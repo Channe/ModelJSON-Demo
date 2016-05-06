@@ -263,6 +263,7 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
     
     Class cls = self.cls;
     unsigned int methodCount = 0;
+    //方法
     Method *methods = class_copyMethodList(cls, &methodCount);
     if (methods) {
         NSMutableDictionary *methodInfos = [NSMutableDictionary new];
@@ -274,6 +275,7 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
         free(methods);
     }
     unsigned int propertyCount = 0;
+    //属性
     objc_property_t *properties = class_copyPropertyList(cls, &propertyCount);
     if (properties) {
         NSMutableDictionary *propertyInfos = [NSMutableDictionary new];
@@ -286,6 +288,7 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
     }
     
     unsigned int ivarCount = 0;
+    //Describes the instance variables declared by a class. 实例变量
     Ivar *ivars = class_copyIvarList(cls, &ivarCount);
     if (ivars) {
         NSMutableDictionary *ivarInfos = [NSMutableDictionary new];

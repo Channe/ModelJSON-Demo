@@ -1,0 +1,3 @@
+Benchmark是YYModel作者创建的测试项目，包含了主流的model转json库，有Mantle/JSONModel/MJExtension/FastEasyMapping/YYModel，都有源码和示例程序，非常适合用来学习！
+
+这个项目记录下我的学习笔记和疑问。笔记和疑问都使用代码注释的形式保存在源码中。

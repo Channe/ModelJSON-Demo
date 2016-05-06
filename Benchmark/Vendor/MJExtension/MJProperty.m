@@ -38,10 +38,13 @@
 #pragma mark - 缓存
 + (instancetype)cachedPropertyWithProperty:(objc_property_t)property
 {
+    //id objc_getAssociatedObject(id object, void *key)
+    //Returns the value associated with a given object for a given key.
     MJProperty *propertyObj = objc_getAssociatedObject(self, property);
     if (propertyObj == nil) {
         propertyObj = [[self alloc] init];
         propertyObj.property = property;
+        //Sets an associated value for a given object using a given key and association policy.
         objc_setAssociatedObject(self, property, propertyObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return propertyObj;
